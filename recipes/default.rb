@@ -19,6 +19,13 @@ ssh_authorize_key 'Main user' do
   key node['seedbox']['user_ssh_pubkey']
 end
 
+sudo 'Allow any sudoer to go to rtorrent without password' do
+  user '%sudo'
+  runas lazy { node['rtorrent']['user'] }
+  nopasswd true
+  commands ['ALL']
+end
+
 package 'mosh' do
   action :upgrade
 end
