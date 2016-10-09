@@ -2,10 +2,17 @@ include_recipe 'openssh'
 include_recipe 'rtorrent'
 include_recipe 'sudo'
 
+%w(mosh zsh).each do |pkg|
+  package pkg do
+    action :upgrade
+  end
+end
+
 user 'Main user' do
   username lazy { node['seedbox']['user'] }
   home lazy { node['seedbox']['user_path'] }
   manage_home true
+  shell '/bin/zsh'
 end
 
 group 'sudo' do
@@ -24,8 +31,4 @@ sudo 'Allow any sudoer to go to rtorrent without password' do
   runas lazy { node['rtorrent']['user'] }
   nopasswd true
   commands ['ALL']
-end
-
-package 'mosh' do
-  action :upgrade
 end
