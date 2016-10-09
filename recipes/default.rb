@@ -1,6 +1,7 @@
 include_recipe 'openssh'
 include_recipe 'rtorrent'
 include_recipe 'sudo'
+include_recipe 'unattended-upgrades'
 
 %w(mosh zsh).each do |pkg|
   package pkg do
