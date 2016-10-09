@@ -7,6 +7,12 @@ user 'Main user' do
   manage_home true
 end
 
+group 'sudo' do
+  action :create
+  members lazy { [node['seedbox']['user']] }
+  append true
+end
+
 ssh_authorize_key 'Main user' do
   user node['seedbox']['user']
   key node['seedbox']['user_ssh_pubkey']
