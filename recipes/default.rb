@@ -1,5 +1,6 @@
 include_recipe 'openssh'
 include_recipe 'rtorrent'
+include_recipe 'sudo'
 
 user 'Main user' do
   username lazy { node['seedbox']['user'] }

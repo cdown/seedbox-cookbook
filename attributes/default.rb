@@ -13,7 +13,6 @@ default['seedbox']['user_ssh_pubkey'] = \
   'rst6zbboAK/SDbGNzsMxzzg1rjUOsQmzF/wLAXa9U2QEed10UvtuyofQ4eJspnx2uka6Ky'\
   '5SR5rFHCBfs8kw=='
 
-
 default['openssh']['server']['password_authentication'] = 'no'
 
-default['authorization']['sudo']['groups'] = 'sudo'
+default['authorization']['sudo']['groups'] = ['sudo']
