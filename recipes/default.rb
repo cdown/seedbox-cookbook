@@ -33,3 +33,7 @@ sudo 'Allow any sudoer to go to rtorrent without password' do
   nopasswd true
   commands ['ALL']
 end
+
+link '/data' do
+  to lazy { node['rtorrent']['path']['data'] }
+end
